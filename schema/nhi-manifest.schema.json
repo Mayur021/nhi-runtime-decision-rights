@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Mayur021/nhi-runtime-decision-rights/schema/nhi-manifest.schema.json",
+  "title": "NHI Runtime Decision-Rights Manifest",
+  "description": "Manifest declaring the identity provenance and permitted actions for a non-human identity. Companion to OWASP SPVS V1.3.7 work on NHI runtime decision-rights.",
+  "type": "object",
+  "required": ["nhi_id", "manifest_version", "identity_type", "identity_provenance", "permitted_actions"],
+  "properties": {
+    "nhi_id": {
+      "type": "string",
+      "description": "Unique identifier for this NHI manifest.",
+      "minLength": 1
+    },
+    "manifest_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "identity_type": {
+      "type": "string",
+      "enum": ["service_account", "ci_pipeline_token", "workload_identity_federation", "agent_credential"]
+    },
+    "identity_provenance": {
+      "type": "object",
+      "required": ["issuer", "subject"],
+      "properties": {
+        "issuer": {
+          "type": "string",
+          "description": "Token issuer. Examples: 'token.actions.githubusercontent.com', 'spiffe://example.org', 'https://accounts.google.com'."
+        },
+        "subject": {
+          "type": "string",
+          "description": "Token subject. Example: 'repo:org/repo:ref:refs/heads/main', 'spiffe://example.org/ns/prod/sa/api'."
+        },
+        "audience": {
+          "type": "string",
+          "description": "Required token audience. The gate refuses tokens with a different audience."
+        },
+        "max_age_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum age of the token at the moment of the gate check. Tokens older than this are refused."
+        },
+        "trust_anchor": {
+          "type": "string",
+          "description": "Optional. Identifier of the trust anchor (root CA, JWKS endpoint, SPIFFE trust domain root) that the issuer must chain to."
+        }
+      },
+      "additionalProperties": false
+    },
+    "permitted_actions": {
+      "type": "array",
+      "description": "Actions this NHI is permitted to invoke. References to the action-class manifest by action name.",
+      "items": {
+        "type": "object",
+        "required": ["action", "class"],
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Action identifier. Matches an entry in the action-class manifest."
+          },
+          "class": {
+            "type": "string",
+            "enum": ["read_only", "reversible", "external_reversible", "irreversible"],
+            "description": "Maximum action class this NHI is permitted to invoke."
+          },
+          "target_scope": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "default_policy_when_undeclared": {
+      "type": "string",
+      "enum": ["refuse"],
+      "default": "refuse"
+    }
+  },
+  "additionalProperties": false
+}

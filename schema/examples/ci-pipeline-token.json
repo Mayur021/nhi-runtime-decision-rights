@@ -1,0 +1,30 @@
+{
+  "nhi_id": "github-actions-deploy-pipeline-v1",
+  "manifest_version": "1.0.0",
+  "identity_type": "ci_pipeline_token",
+  "identity_provenance": {
+    "issuer": "token.actions.githubusercontent.com",
+    "subject": "repo:example-org/example-app:ref:refs/heads/main",
+    "audience": "https://deploy.example.com",
+    "max_age_seconds": 900,
+    "trust_anchor": "github-actions-oidc-jwks"
+  },
+  "permitted_actions": [
+    {
+      "action": "fetch_artifact",
+      "class": "read_only",
+      "target_scope": "artifacts.read"
+    },
+    {
+      "action": "deploy_to_staging",
+      "class": "external_reversible",
+      "target_scope": "deploy.staging"
+    },
+    {
+      "action": "deploy_to_prod",
+      "class": "irreversible",
+      "target_scope": "deploy.prod"
+    }
+  ],
+  "default_policy_when_undeclared": "refuse"
+}

@@ -1,0 +1,30 @@
+{
+  "nhi_id": "spiffe-prod-api-wif-v1",
+  "manifest_version": "1.0.0",
+  "identity_type": "workload_identity_federation",
+  "identity_provenance": {
+    "issuer": "spiffe://example.org",
+    "subject": "spiffe://example.org/ns/prod/sa/api",
+    "audience": "https://cloud-api.example.com",
+    "max_age_seconds": 600,
+    "trust_anchor": "spiffe-trust-domain-root"
+  },
+  "permitted_actions": [
+    {
+      "action": "read_cloud_object",
+      "class": "read_only",
+      "target_scope": "cloud.storage.read"
+    },
+    {
+      "action": "write_cloud_object",
+      "class": "external_reversible",
+      "target_scope": "cloud.storage.write"
+    },
+    {
+      "action": "delete_cloud_object",
+      "class": "irreversible",
+      "target_scope": "cloud.storage.delete"
+    }
+  ],
+  "default_policy_when_undeclared": "refuse"
+}
