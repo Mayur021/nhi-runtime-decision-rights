@@ -1,6 +1,6 @@
 # NHI Runtime Decision-Rights
 
-Reference implementation for non-human identity (NHI) runtime decision-rights, companion to **OWASP SPVS V1.3.7** work and to the `aisvs-action-class-reference` repo.
+Reference implementation for non-human identity (NHI) runtime decision-rights, companion to a proposed SPVS requirement, **V1.3.7** in [PR #15](https://github.com/OWASP/www-project-spvs/pull/15) (open), and to the `aisvs-action-class-reference` repo.
 
 Where the AISVS reference covers the **action class** side of the gate, this repo covers the **identity provenance** side. Together they specify the floor for the write side of agentic AI: classification declared upstream, identity provenance verified at runtime, both feeding one deterministic gate.
 
