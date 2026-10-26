@@ -1,7 +1,7 @@
 """
 NHI Runtime Decision-Rights Gate. Reference implementation.
 
-Pairs with the AISVS action-class reference. Where AISVS C9.2.6 says
+Pairs with the AISVS action-class reference. Where AISVS C9.2.3 says
 'the action class is declared in the manifest and evaluated by a
 deterministic gate, not derived from agent runtime output', this gate
 adds the identity-side check: 'the calling NHI is the one declared,
