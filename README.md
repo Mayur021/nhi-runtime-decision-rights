@@ -13,7 +13,7 @@ Where the AISVS reference covers the **action class** side of the gate, this rep
 
 ## The architectural cut
 
-NHI runtime decision-rights pair with action-class authority. Action class says **what the agent is allowed to do** (AISVS C9.2.6 / C9.2.7). NHI provenance says **what identity the agent is operating under, right now**.
+NHI runtime decision-rights pair with action-class authority. Action class says **what the agent is allowed to do** (AISVS C9.2.3 / C9.2.4 / C9.2.10). NHI provenance says **what identity the agent is operating under, right now**.
 
 Two failure modes the manifest is meant to catch:
 
