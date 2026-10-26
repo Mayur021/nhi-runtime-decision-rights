@@ -79,7 +79,7 @@ CC-BY-4.0.
 ## Related work
 
  - [Action-Class Authority for AI Agents: A Verification-Side Reference](https://github.com/Mayur021/action-class-authority) — Whitepaper v1.0 (June 2026). Chapter 8 covers the joint chain-level audit schema (six properties, with Mallikarjunarao Sunke) that this NHI runtime gate operationalizes. Anchored in OWASP AISVS C9.2.3, C9.2.4 and C9.2.10, shipped in v1.0, and CSA Defining Non-Human Identity (published July 2026).
-- OWASP SPVS V1.3.7 (NHI runtime decision-rights, work in progress).
+- OWASP SPVS V1.3.7 (NHI runtime decision-rights), proposed in [PR #15](https://github.com/OWASP/www-project-spvs/pull/15) and open.
 - OWASP AISVS C9.2.3 / C9.2.4 / C9.2.10 (action-class authority).
 - SPIFFE / SPIRE for cryptographic workload identity.
 - Workload Identity Federation (cross-cloud and across-issuer patterns).
